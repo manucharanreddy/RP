@@ -1,0 +1,74 @@
+
+.app-root {
+  min-height: 100vh;
+  padding: 24px;
+  background-image: url('https://i.ibb.co/h2p6Yhd/rain.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.app-sheet {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.94);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.left-aside {
+  width: 300px;                 
+  padding: 24px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.right-main {
+  padding: 24px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.right-scroll {
+  overflow-y: auto;
+  padding-right: 6px;      
+}
+
+.hourly-wrapper {
+  max-width: 980px;        
+  margin: 0 auto;          
+}
+
+.card.h-100 {
+  border-radius: 12px;
+}
+
+@media (max-width: 992px) {
+  .left-aside {
+    width: 260px;
+    padding: 18px;
+  }
+  .hourly-wrapper {
+    max-width: 100%;
+  }
+}
+
+.right-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.right-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 6px;
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 110px; 
+}
