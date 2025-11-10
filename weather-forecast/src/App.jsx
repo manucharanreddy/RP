@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useEffect, useState } from "react";
 import { Searchbar } from "./components/Searchbar";
 import { Currentweather } from "./components/Currentweather";
@@ -15,7 +14,7 @@ export const App = () => {
   const [unit, setUnit] = useState("metric");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [view, setView] = useState("today"); 
+  const [view, setView] = useState("today");
 
   const fetchWeather = async (q) => {
     const location = q || city;
@@ -46,14 +45,14 @@ export const App = () => {
   if (loading && !data) {
     return (
       <div className="app-root d-flex vh-100 justify-content-center align-items-center">
-        <div className="p-4 rounded bg-white">Loading weather...</div>
+        <div className="loader-card p-4 rounded">Loading weather...</div>
       </div>
     );
   }
   if (error) {
     return (
       <div className="app-root d-flex vh-100 justify-content-center align-items-center">
-        <div className="p-4 rounded bg-white text-danger">Error: {error}</div>
+        <div className="loader-card p-4 rounded text-danger">Error: {error}</div>
       </div>
     );
   }
@@ -64,83 +63,92 @@ export const App = () => {
 
   return (
     <div className="app-root">
-      <div className="app-sheet card rounded-3 shadow-sm">
-        <div className="d-flex" style={{ minHeight: "70vh" }}>
-          {/* Left fixed column */}
+      <div className="app-sheet">
+        <div className="sheet-inner d-flex">
+          {/* LEFT */}
           <aside className="left-aside d-flex flex-column">
-            <div>
-              <Searchbar initialValue={city} onSearch={(q) => fetchWeather(q)} />
-              <div className="mt-4">
+            <div className="left-top">
+              <div className="search-wrap mb-3">
+                <Searchbar initialValue={city} onSearch={(q) => fetchWeather(q)} />
+              </div>
+
+              <div className="weather-hero mt-2">
                 <Currentweather locationName={data?.resolvedAddress} today={today} />
+              </div>
+
+              <div className="meta mt-4">
+                <div className="muted small mb-2">Precipitation: <strong>{Math.round(today?.precip ?? 0)}%</strong></div>
+                <div className="muted small">Humidity: <strong>{Math.round(today?.humidity ?? 0)}%</strong></div>
               </div>
             </div>
 
-            <div className="mt-auto small text-muted mb-3">
+            <div className="left-footer mt-auto small text-muted">
               {data?.resolvedAddress}
             </div>
           </aside>
 
-          {/* Right fluid column */}
+          {/* RIGHT */}
           <main className="flex-fill right-main d-flex flex-column">
-            <div className="d-flex justify-content-between align-items-start mb-3">
+            <div className="top-controls d-flex justify-content-between align-items-center mb-3">
               <div className="d-flex align-items-center">
-                <div>
+                <div className="unit-toggle btn-group me-3" role="group">
                   <button
                     onClick={() => { setUnit("metric"); fetchWeather(city); }}
-                    className={`btn btn-sm ${unit === "metric" ? "btn-primary" : "btn-outline-secondary"}`}
+                    className={`btn btn-sm ${unit === "metric" ? "btn-solid" : "btn-ghost"}`}
                   >
                     °C
                   </button>
                   <button
                     onClick={() => { setUnit("us"); fetchWeather(city); }}
-                    className={`btn btn-sm ms-2 ${unit === "us" ? "btn-primary" : "btn-outline-secondary"}`}
+                    className={`btn btn-sm ${unit === "us" ? "btn-solid" : "btn-ghost"}`}
                   >
                     °F
                   </button>
                 </div>
 
-                {/* VIEW TOGGLE */}
-                <div className="ms-4 btn-group" role="group" aria-label="view-toggle">
+                <div className="view-toggle btn-group me-3" role="group" aria-label="view-toggle">
                   <button
                     type="button"
-                    className={`btn btn-sm ${view === "today" ? "btn-primary" : "btn-outline-secondary"}`}
+                    className={`btn btn-sm ${view === "today" ? "btn-solid-primary" : "btn-ghost"}`}
                     onClick={() => setView("today")}
                   >
                     Today
                   </button>
                   <button
                     type="button"
-                    className={`btn btn-sm ${view === "week" ? "btn-primary" : "btn-outline-secondary"}`}
+                    className={`btn btn-sm ${view === "week" ? "btn-solid-primary" : "btn-ghost"}`}
                     onClick={() => setView("week")}
                   >
                     Week
                   </button>
                 </div>
 
-                <div className="ms-3 fw-semibold fs-5">Forecast</div>
+                <h4 className="mb-0 ms-2 fw-semibold">Forecast</h4>
               </div>
 
               <div className="text-muted small">{today?.datetime}</div>
             </div>
 
-            {/* Scrollable content area */}
             <div className="right-scroll flex-fill">
-              <div className="hourly-wrapper">
+              <div className="content-pad">
                 {view === "today" ? (
                   <>
-                    <Hourly day={today} />
-                    <h5 className="mt-4">Today's Highlights</h5>
+                    <div className="hourly-wrapper">
+                      <Hourly day={today} />
+                    </div>
+
+                    <h5 className="mt-4 section-title">Today's Highlights</h5>
                     <Highlights day={today} current={current} />
                   </>
                 ) : (
                   <>
-                    <h5>Weekly Forecast</h5>
+                    <h5 className="section-title">Weekly Forecast</h5>
                     <Weekly days={days} />
                   </>
                 )}
-              </div>
 
-              <div className="mt-3 small text-muted">Weather Prediction App by ADARSHA HELVAR</div>
+                <div className="app-credit mt-4 small text-muted">Weather Prediction App by <span className="brand">Manu Charan Reddy</span></div>
+              </div>
             </div>
           </main>
         </div>
@@ -148,6 +156,5 @@ export const App = () => {
     </div>
   );
 };
-
 
 export default App;
