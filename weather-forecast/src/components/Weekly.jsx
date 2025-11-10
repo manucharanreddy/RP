@@ -1,12 +1,10 @@
 
-// src/components/Weekly.jsx
+
 import React from "react";
 import { getIcon } from "../utils/Icons";
 
-/**
- * Weekly: displays a list/grid of daily forecast cards
- * Expects `days` to be an array from VisualCrossing data (data.days)
- */
+
+
 export const Weekly = ({ days }) => {
   if (!days || days.length === 0) {
     return <div className="text-muted">No weekly data available.</div>;
@@ -15,11 +13,10 @@ export const Weekly = ({ days }) => {
   return (
     <div className="row g-3">
       {days.map((d, idx) => {
-        // VisualCrossing day object has: datetime (YYYY-MM-DD), temp (avg), tempmax, tempmin, icon
         const iconUrl = getIcon(d.icon);
         const date = new Date(d.datetime);
-        const weekday = date.toLocaleDateString(undefined, { weekday: "short" }); // e.g. Mon
-        const dayNum = date.toLocaleDateString(undefined, { month: "short", day: "numeric" }); // e.g. Nov 10
+        const weekday = date.toLocaleDateString(undefined, { weekday: "short" }); 
+        const dayNum = date.toLocaleDateString(undefined, { month: "short", day: "numeric" }); 
 
         return (
           <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={idx}>

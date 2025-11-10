@@ -1,16 +1,11 @@
-// src/components/Hourly.jsx
 import React from "react";
 import { getIcon } from "../utils/Icons";
 
-/**
- * Hourly grid — compact, responsive, and uses its own .hourly-grid
- * Expects day.hours = [{ datetime: "00:00:00", temp: 6.3, icon: "rain" }, ...]
- */
+
 export const Hourly = ({ day = {} }) => {
   const hours = day.hours ?? [];
 
   const formatHour = (hString, idx) => {
-    // Accepts either "00:00:00" or numeric hour; fallback to idx
     let hourNum = Number(hString?.split?.(":")?.[0]);
     if (Number.isNaN(hourNum)) hourNum = Number(hString);
     if (Number.isNaN(hourNum)) hourNum = idx;

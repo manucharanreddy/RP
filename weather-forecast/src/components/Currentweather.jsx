@@ -19,7 +19,7 @@ export const Currentweather = ({ locationName, today }) => {
           <div className="text-muted" style={{ fontSize: "12px" }}>
             {today ? formatDate(today.datetime) : locationName}
           </div>
-          {/* --- THIS IS THE FIXED LINE --- */}
+          
           <div className="mt-2 weather-description" style={{ fontSize: "13px" }}>
             {today?.description || today?.conditions || ""}
           </div>

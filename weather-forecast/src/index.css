@@ -1,100 +1,51 @@
-/* ===================================================
- * src/index.css (Aurora Glass Theme)
- *
- * A top-class UI redesign by Gemini.
- * Dark, rich, and vibrant glassmorphism.
- * FINAL VERSION: Includes all text, background,
- * and highlight-card visibility fixes.
- * =================================================== */
-
-/* --------------------
- * Design tokens
- * -------------------- */
 :root {
-  /* Rich new color palette */
-  --muted: #94a3b8; /* Lighter grey for dark BG */
-  --accent: #0ea5e9; /* Sky blue */
-  --accent-2: #10b981; /* Emerald green */
+  --muted: #94a3b8;
+  --accent: #0ea5e9;
+  --accent-2: #10b981;
   --accent-gradient: linear-gradient(90deg, var(--accent), var(--accent-2));
   --text-primary: #ffffff;
   --text-secondary: #e2e8f0;
-
-  /* Glass & Shadow tokens */
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-border-hover: rgba(255, 255, 255, 0.3);
-  --glass-bg-card: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.03)
-  );
-  --glass-bg-card-hover: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.06)
-  );
+  --glass-bg-card: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  --glass-bg-card-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06));
   --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  
-  /* Main sheet/app tokens */
-  --bg-sheet: linear-gradient(
-    180deg,
-    rgba(20, 26, 42, 0.85),
-    rgba(15, 23, 42, 0.9)
-  );
+  --bg-sheet: linear-gradient(180deg, rgba(20, 26, 42, 0.85), rgba(15, 23, 42, 0.9));
   --sheet-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
-/* --------------------
- * Base page
- * -------------------- */
 * {
   box-sizing: border-box;
 }
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
 }
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-
-  /* New rich aurora background */
-  background-color: #0f172a; /* Dark slate fallback */
-  
-  /* Thematic "dark stormy sky" background */
+  background-color: #0f172a;
   background-image: url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1920&q=80");
-  
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
-  /* Base text color is now bright white */
   color: var(--text-primary);
 }
 
-/* Base image styles */
-img,
-picture,
-svg {
+img, picture, svg {
   display: block;
   max-width: 100%;
   image-rendering: optimizeQuality;
 }
 
-/* Base placeholder styles */
 ::placeholder {
   color: var(--muted);
   opacity: 1;
 }
 
-/* --------------------
- * App container / sheet
- * -------------------- */
 .app-root {
   min-height: 100vh;
   padding: 28px;
@@ -114,31 +65,21 @@ svg {
   border: 1px solid var(--glass-border);
 }
 
-/* inner layout */
 .sheet-inner {
   display: flex;
   gap: 0;
   min-height: 72vh;
 }
 
-/* --------------------
- * LEFT PANEL (glass)
- * -------------------- */
 .left-aside {
   width: 320px;
   padding: 28px;
-  /* Subtle sheen to distinguish from right panel */
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.01)
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
   border-right: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
 }
 
-/* Searchbox */
 .search-wrap .form-control {
   border-radius: 10px;
   box-shadow: none;
@@ -152,7 +93,6 @@ svg {
   border-color: var(--glass-border-hover);
 }
 
-/* hero area */
 .weather-hero {
   margin-top: 12px;
 }
@@ -162,7 +102,6 @@ svg {
   height: 86px;
 }
 
-/* This class is for "Partly cloudy..." */
 .weather-description {
   color: var(--text-secondary);
   opacity: .98;
@@ -172,8 +111,6 @@ svg {
   margin-top: 6px;
 }
 
-
-/* left text */
 .left-aside .muted {
   color: var(--muted);
   font-size: 13px;
@@ -183,9 +120,6 @@ svg {
   color: var(--muted);
 }
 
-/* --------------------
- * RIGHT PANEL
- * -------------------- */
 .right-main {
   padding: 28px;
   display: flex;
@@ -194,7 +128,6 @@ svg {
   flex: 1 1 auto;
 }
 
-/* top control styles */
 .top-controls .btn {
   border-radius: 9px;
 }
@@ -222,7 +155,6 @@ svg {
   font-size: 13px;
 }
 
-/* right scroll area */
 .right-scroll {
   overflow-y: auto;
   scrollbar-gutter: stable;
@@ -230,14 +162,12 @@ svg {
   scroll-padding-top: 28px;
 }
 
-/* central content wrapper */
 .content-pad {
   max-width: 980px;
   margin: 0 auto;
   padding-bottom: 18px;
 }
 
-/* section title */
 .section-title {
   margin-top: 18px;
   margin-bottom: 10px;
@@ -247,9 +177,6 @@ svg {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* --------------------
- * HOURLY GRID (dedicated)
- * -------------------- */
 .hourly-wrapper {
   max-width: 980px;
   margin: 0 auto;
@@ -266,7 +193,6 @@ svg {
   list-style: none;
 }
 
-/* hourly card */
 .hourly-card {
   background: var(--glass-bg-card);
   border-radius: 12px;
@@ -278,13 +204,11 @@ svg {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.16s ease, box-shadow 0.16s ease,
-    background 0.16s ease, border-color 0.16s ease;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
   text-align: center;
   cursor: pointer;
 }
 
-/* time label */
 .hourly-time {
   font-size: 12px;
   color: var(--muted);
@@ -292,7 +216,6 @@ svg {
   letter-spacing: -0.2px;
 }
 
-/* icon */
 .hourly-icon {
   width: 52px;
   height: 52px;
@@ -301,7 +224,6 @@ svg {
   filter: drop-shadow(0 8px 18px rgba(12, 18, 30, 0.08));
 }
 
-/* temp */
 .hourly-temp {
   font-weight: 700;
   margin-top: 6px;
@@ -309,34 +231,29 @@ svg {
   color: var(--text-primary);
 }
 
-/* --------------------
- * HIGHLIGHTS / CARDS
- * -------------------- */
 .card.h-100 {
   border-radius: 12px;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-card);
   box-shadow: var(--card-shadow);
-  transition: transform 0.16s ease, box-shadow 0.16s ease,
-    background 0.16s ease, border-color 0.16s ease;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
   cursor: pointer;
 }
 .card.h-100 .card-body {
   padding: 18px;
-  text-align: center; /* Center align text in cards */
+  text-align: center;
 }
 
 .stat-value {
   font-size: 28px;
   font-weight: 700;
   margin-top: 6px;
-  color: var(--text-primary); /* FIXED: Set to primary text color (white) */
-  /* REMOVED original gradient text styles that made it transparent */
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.15); /* Optional: a subtle white glow */
+  color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
 }
 
 .stat-value span {
-  color: var(--text-secondary); /* This was already okay, keep it if desired */
+  color: var(--text-secondary);
   font-size: 18px;
   margin-left: 4px;
 }
@@ -345,14 +262,10 @@ svg {
   opacity: .95;
 }
 
-/* Override Bootstrap's default */
 .text-muted {
   color: var(--muted) !important;
 }
 
-/* --------------------
- * WEEKLY CARDS
- * -------------------- */
 .row.g-3 > .col-6,
 .row.g-3 > .col-sm-4,
 .row.g-3 > .col-md-3,
@@ -366,11 +279,8 @@ svg {
   justify-content: center;
 }
 
-/* --------------------
- * small utilities / credits
- * -------------------- */
 .app-credit .brand {
-  color: var(--accent-2); /* This will now be the emerald green */
+  color: var(--accent-2);
   font-weight: 700;
 }
 .loader-card {
@@ -382,12 +292,8 @@ svg {
   color: var(--text-primary);
 }
 
-/* --------------------
- * ENHANCEMENT: Transitions & Interactions
- * -------------------- */
 .btn {
-  transition: transform 0.15s ease, box-shadow 0.15s ease,
-    background 0.15s ease, border-color 0.15s ease, filter 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, filter 0.15s ease;
   will-change: transform;
 }
 
@@ -401,7 +307,6 @@ svg {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-/* Specific hover states for button types */
 .btn-solid:hover:not(:disabled),
 .btn-solid-primary:hover:not(:disabled) {
   filter: brightness(1.15) saturate(1.1);
@@ -413,7 +318,6 @@ svg {
   color: var(--text-primary);
 }
 
-/* --- Card Hovers (The Magic) --- */
 .hourly-card:hover,
 .hourly-card:focus-visible,
 .card.h-100:hover,
@@ -421,36 +325,26 @@ svg {
   transform: translateY(-6px);
   background: var(--glass-bg-card-hover);
   border-color: var(--glass-border-hover);
-  /* A glowing shadow using your accent color! */
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2),
-    0 0 24px -4px hsla(from var(--accent) h s l / 0.3);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2), 0 0 24px -4px hsla(from var(--accent) h s l / 0.3);
 }
 
-/* --------------------
- * ENHANCEMENT: Accessibility (Focus)
- * -------------------- */
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
   box-shadow: none;
 }
 
-/* Special focus for cards (matches hover) */
 .hourly-card:focus-visible,
 .card.h-100:focus-visible {
-  outline: none; /* Use the box-shadow glow instead */
+  outline: none;
 }
 
-/* Form controls look better with a "glow" shadow */
 .form-control:focus-visible {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(from var(--accent) h s l / 0.25);
   outline: none;
 }
 
-/* --------------------
- * Responsive breakpoints
- * -------------------- */
 @media (max-width: 1200px) {
   .hourly-grid {
     gap: 14px;
@@ -485,10 +379,10 @@ svg {
 
 @media (max-width: 576px) {
   .app-root {
-    padding: 8px; /* Tighter padding on mobile */
+    padding: 8px;
   }
   .app-sheet {
-    border-radius: 12px; /* Smaller radius */
+    border-radius: 12px;
   }
   .hourly-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -502,22 +396,17 @@ svg {
   }
 }
 
-/* --------------------
- * Small adjustments
- * -------------------- */
 .small {
   font-size: 13px;
   color: var(--muted);
 }
-h4,
-h5 {
+h4, h5 {
   letter-spacing: -0.2px;
   margin: 0 0 8px 0;
   text-wrap: pretty;
   color: var(--text-primary);
 }
 
-/* Override Bootstrap's .text-danger for errors */
 .text-danger {
-  color: #f87171 !important; /* A lighter, more visible red */
+  color: #f87171 !important;
 }
