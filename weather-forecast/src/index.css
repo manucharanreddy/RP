@@ -72,3 +72,9 @@
   align-items: center;
   min-height: 110px; 
 }
+
+
+
+.app-sheet .card .card-body img {
+  object-fit: contain;
+}
